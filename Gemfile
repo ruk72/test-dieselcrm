@@ -48,11 +48,8 @@ group :test do
   gem 'database_cleaner'
   gem 'fuubar'
 
-  if RUBY_VERSION.to_f >= 1.9
-    gem 'factory_girl_rails', '~> 3.0.0'
-  else
-    gem 'factory_girl_rails', '~> 1.7.0'
-  end
+ 
+  
 end
 
 
