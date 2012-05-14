@@ -2,7 +2,7 @@ source :rubygems
 
 # Uncomment the database that you have configured in config/database.yml
 # ----------------------------------------------------------------------
-# gem 'mysql2', '0.3.10'
+ gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 gem 'pg', '~> 0.13.2'
 
@@ -29,7 +29,7 @@ end
 gem 'ransack',      :git => "https://github.com/fatfreecrm/ransack.git"
 gem 'chosen-rails', :git => "https://github.com/fatfreecrm/chosen-rails.git"
 gem 'responds_to_parent', :git => "https://github.com/LessonPlanet/responds_to_parent.git"
-gem 'email_reply_parser', :git => "https://github.com/ndbroadbent/email_reply_parser.git", :branch => 'ensure_newline_above_underscores'
+gem 'email_reply_parser'
 gem 'premailer', :require => false
 
 
