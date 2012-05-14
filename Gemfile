@@ -36,17 +36,9 @@ gem 'premailer', :require => false
 # Remove fat_free_crm dependency, to stop it from being auto-required too early.
 remove 'fat_free_crm'
 
-group :development, :test do
-  gem 'rspec-rails', '~> 2.9.0'
-  gem 'steak', :require => false
-  gem 'headless'
-  end
 
-group :test do
-  gem 'capybara'
-  gem 'spork'
-  gem 'database_cleaner'
-  gem 'fuubar'
+
+
 
  
   
