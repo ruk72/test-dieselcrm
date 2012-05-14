@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :lists
-
+  map.heroku_sass_and_cache
   root :to => 'home#index'
 
   match 'activities' => 'home#index'
