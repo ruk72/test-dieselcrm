@@ -5,6 +5,7 @@ source :rubygems
  gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 gem 'pg', '~> 0.13.2'
+gem 'heroku'
 
 # Removes a gem dependency
 def remove(name)
