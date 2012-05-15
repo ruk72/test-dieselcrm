@@ -18,6 +18,23 @@ if defined?(FatFreeCRM::Application)
 
     # Don't fallback to assets pipeline if a precompiled asset is missed
     config.assets.compile = true
+    
+    # Don't care if the mailer can't send
+    config.action_mailer.raise_delivery_errors = true
+    
+    # set delivery method to :smtp, :sendmail or :test
+    config.action_mailer.delivery_method = :smtp
+
+    # these options are only needed if you choose smtp delivery
+    config.action_mailer.smtp_settings = {
+              :address              => 'smtp.gmail.com',
+              :port                 => 587,
+              :domain               => 'imap.gmail.com',
+              :user_name            => 'kiplmailtest@gmail.com',
+              :password             => 'kipltest',
+              :authentication       => 'login',
+              :enable_starttls_auto => true
+      }
 
     # Generate digests for assets URLs
     config.assets.digest = true
@@ -59,5 +76,7 @@ if defined?(FatFreeCRM::Application)
 
     # Send deprecation notices to registered listeners
     config.active_support.deprecation = :notify
+    
+    config.action_mailer.default_url_options = { :host => 'http://dieselcrm.heroku.com' }
   end
 end
