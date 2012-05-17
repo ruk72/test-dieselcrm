@@ -51,7 +51,7 @@
 #
 # :host: "http://www.example.com"
 #
-:host: "http://dieselcrm.heroku.com"
+:host: ""
 
 
 # Base URL
@@ -64,7 +64,7 @@
 # http://www.domain.com/crm   => :base_url: "/crm"   # (without trailing slash)
 # http://www.domain.com/a/crm => :base_url: "/a/crm" # (without trailing slash)
 #
-:base_url: "http://dieselcrm.heroku.com"
+:base_url: ""
 
 
 # Locale
@@ -82,8 +82,8 @@
   :enable_starttls_auto       : true
   :port                       : 587
   :authentication             : :plain
-  :user_name                  : "kiplmailtest@gmail.com"
-  :password                   : "kipltest"
+  :user_name                  : ""
+  :password                   : ""
 
 
 # Settings for the Email dropbox (IMAP)
