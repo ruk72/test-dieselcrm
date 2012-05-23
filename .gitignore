@@ -1,4 +1,4 @@
-config/*.yml
+
 !config/settings.default.yml
 !config/database.mysql.mac.yml
 !config/database.mysql.yml
