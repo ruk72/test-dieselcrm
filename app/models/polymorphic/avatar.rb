@@ -47,7 +47,16 @@ class Avatar < ActiveRecord::Base
       attachment.instance.entity_type
     end
   end
-  has_attached_file :image, :styles => STYLES.dup, :url => "/avatars/:entity_type/:id/:style_:filename", :default_url => "/assets/avatar.jpg"
+  
+  
+  has_attached_file :image, 
+                     :styles => STYLES.dup,
+
+                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",
+                     :path => "/avatars/:entity_type/:id/:style_:filename",
+                      :default_url => "/assets/avatar.jpg"
+                     
+  
 
 end
 

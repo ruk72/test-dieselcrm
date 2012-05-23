@@ -69,3 +69,6 @@ group :assets do
   gem 'uglifier',     '>= 1.0.3'
 end
 gem 'bootstrap-sass', '~> 2.0.2'
+
+gem 'aws-s3'
+gem 'aws-sdk'
