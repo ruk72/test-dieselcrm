@@ -71,7 +71,7 @@
 #------------------------------------------------------------------------------
 # Default locale is American English.
 #
-:locale: "en-US"
+:locale: "en-GB"
 
 
 # Settings for outgoing email (SMTP)
