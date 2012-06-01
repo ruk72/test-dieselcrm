@@ -1,5 +1,10 @@
 = styles_for :fields
 
+.title
+  %span#create_field_title= t(:admin_tab_fields)
+
+.info= t(:admin_fields_info).html_safe
+
 .inline_tabs
   %ul
     - Field::KLASSES.each do |klass|
