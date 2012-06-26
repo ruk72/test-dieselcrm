@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #------------------------------------------------------------------------------
-
+require 'open-uri'
+require 'json'
 class LeadsController < EntitiesController
   before_filter :get_data_for_sidebar, :only => :index
 
@@ -22,6 +23,7 @@ class LeadsController < EntitiesController
   #----------------------------------------------------------------------------
   def index
     @leads = get_leads(:page => params[:page])
+    @result = JSON.parse(open('http://api.edmunds.com/v1/api/vehicle-directory-ajax/findmakes?api_key=ezd3gafeked243drd7j7f27k&fmt=json').read)
     respond_with(@leads)
   end
 
