@@ -42,9 +42,10 @@ class LeadsController < EntitiesController
   def new
     @lead.attributes = {:user => @current_user, :access => Setting.default_access}
     @users = User.except(@current_user)    
-    @vehiclecsv = Vehiclecsv.select("distinct model_year").order("model_year")
+    @vehiclecsv = Vehiclecsv.select("distinct model_year").order("model_year desc")
     @carupdate = []
     @momaid    =[]
+    @momaid2    =[]
     @c = []
     @motrim =[]
     get_campaigns
@@ -70,9 +71,10 @@ class LeadsController < EntitiesController
     end  
   end
   def update_modelmakeid
-    @momaid = Vehiclecsv.find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object], :group=>"model_name")
+    @momaid = Vehiclecsv.select("distinct model_name").find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
+    @momaid2 = Vehiclecsv.find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
     render :update do |page|
-      page.replace_html 'update2', :partial => 'leads/update_momaid', :object => [@momaid]
+      page.replace_html 'update2', :partial => 'leads/update_momaid', :object => [@momaid, @momaid2]
     end  
   end
   def update_modeltrim
