@@ -42,7 +42,7 @@ class LeadsController < EntitiesController
   def new
     @lead.attributes = {:user => @current_user, :access => Setting.default_access}
     @users = User.except(@current_user)    
-    @vehiclecsv = Vehiclecsv.all(:group=> "model_year")
+    @vehiclecsv = Vehiclecsv.all(:conditions=>"distinct(model_year)":order=> "model_year")
     @carupdate = []
     @momaid    =[]
     @c = []
@@ -62,7 +62,7 @@ class LeadsController < EntitiesController
   end
   #update for api.
   def update_car
-    @carupdate = Vehiclecsv.find_all_by_model_year(params[:model_year], :group=>"model_make_id")
+    @carupdate = Vehiclecsv.find_all_by_model_year(params[:model_year], :order=>"model_make_id")
     @a = params[:model_year]
     # @carupdate1 = Kharabcar.find_all_by_id(params[:id])
     render :update do |page|
