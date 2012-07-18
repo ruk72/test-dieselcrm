@@ -42,7 +42,7 @@ class LeadsController < EntitiesController
   def new
     @lead.attributes = {:user => @current_user, :access => Setting.default_access}
     @users = User.except(@current_user)    
-    @vehiclecsv = Vehiclecsv.all(:conditions=>"distinct(model_year)", :order=> "model_year")
+    @vehiclecsv = Vehiclecsv.select("distinct model_year").order("model_year")
     @carupdate = []
     @momaid    =[]
     @c = []
