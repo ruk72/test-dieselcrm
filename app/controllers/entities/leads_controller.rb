@@ -111,6 +111,12 @@ class LeadsController < EntitiesController
   #----------------------------------------------------------------------------
   def edit
     @users = User.except(@current_user)
+    @vehiclecsv = Vehiclecsv.select("distinct model_year").order("model_year desc")
+    @carupdate = []
+    @momaid    =[]
+    @momaid2    =[]
+    @c = []
+    @motrim =[]
     get_campaigns
 
     if params[:previous].to_s =~ /(\d+)\z/
