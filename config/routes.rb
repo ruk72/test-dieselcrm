@@ -95,6 +95,9 @@ Rails.application.routes.draw do
       post :update_car
       post :update_modelmakeid
       post :update_modeltrim
+      post :update_car1
+      post :update_modelmakeid1
+      post :update_modeltrim1
     end
     member do
       get  :convert

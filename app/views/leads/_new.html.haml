@@ -12,6 +12,7 @@
   = render "fields/groups",        :f => f
   = render "leads/permissions",    :f => f
   = render "leads/vinform",        :f => f
+  = render "leads/ti_vin_new",     :f => f
   .buttonbar
     - if Setting.compound_address
       = f.submit t(:create_lead), :onclick => "crm.clear_all_hints()"

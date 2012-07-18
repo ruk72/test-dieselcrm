@@ -56,12 +56,13 @@ class Lead < ActiveRecord::Base
   has_many    :tasks, :as => :asset, :dependent => :destroy#, :order => 'created_at DESC'
   has_one     :business_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type='Business'"
   # has_one     :api_lead, :dependent => :destroy
-  # has_one     :ti_vin, :dependent => :destroy
+  has_one     :ti_vin, :dependent => :destroy
   has_one     :voi_vin, :dependent => :destroy
   has_many    :emails, :as => :mediator
   serialize :subscribed_users, Set
   accepts_nested_attributes_for :business_address, :allow_destroy => true
   accepts_nested_attributes_for :voi_vin, :allow_destroy => true
+  accepts_nested_attributes_for :ti_vin, :allow_destroy => true
 
   scope :state, lambda { |filters|
     where([ 'status IN (?)' + (filters.delete('other') ? ' OR status IS NULL' : ''), filters ])

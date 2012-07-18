@@ -54,35 +54,66 @@
       .tags= tags_for_index(@lead)
   .caption #{t "Vehicle Of Interest"}
   %li
-    %dt= t(@lead.voi_vin.model_year)
+    %dt= t(@lead.voi_vin.model_year) rescue "N/A"
     %tt #{t "Model Name"}:
   %li
-    %dt= t(@lead.voi_vin.model_make_id)
+    %dt= t(@lead.voi_vin.model_make_id) rescue "N/A"
     %tt #{t "Model Make"}:
   %li
-    %dt= t(@lead.voi_vin.model_name)
+    %dt= t(@lead.voi_vin.model_name) rescue "N/A"
     %tt #{t "Model Name"}:
   %li
-    %dt= t(@lead.voi_vin.model_trim)
+    %dt= t(@lead.voi_vin.model_trim) rescue "N/A"
     %tt #{t "Model Trim"}:
   %li
-    %dt= t(@lead.voi_vin.int_color)
+    %dt= t(@lead.voi_vin.int_color) rescue "N/A"
     %tt #{t "Interior Color"}:
   %li
-    %dt= t(@lead.voi_vin.ext_color)
+    %dt= t(@lead.voi_vin.ext_color) rescue "N/A"
     %tt #{t "Exterior Color"}:
   %li
-    %dt= t(@lead.voi_vin.stock_no)
+    %dt= t(@lead.voi_vin.stock_no) rescue "N/A"
     %tt #{t "Stock No"}:
   %li
-    %dt= t(@lead.voi_vin.odo_reading)
+    %dt= t(@lead.voi_vin.selling_price) rescue "N/A"
     %tt #{t "Odometer Reading"}:
   %li
-    %dt= t(@lead.voi_vin.invoice_price)
+    %dt= t(@lead.voi_vin.invoice_price) rescue "N/A"
     %tt #{t "Invoice Price"}:
   %li
-    %dt= t(@lead.voi_vin.actual_selling_price)
+    %dt= t(@lead.voi_vin.actual_selling_price) rescue "N/A"
     %tt #{t "Actual Selling Price"}:
+  .caption #{t "Trade In"}
+  %li
+    %dt= t(@lead.voi_vin.model_year) rescue "N/A"
+    %tt #{t "Model Name"}:
+  %li
+    %dt= t(@lead.ti_vin.model_make_id) rescue "N/A"
+    %tt #{t "Model Make"}:
+  %li
+    %dt= t(@lead.ti_vin.model_name) rescue "N/A"
+    %tt #{t "Model Name"}:
+  %li
+    %dt= t(@lead.ti_vin.model_trim) rescue "N/A"
+    %tt #{t "Model Trim"}:
+  %li
+    %dt= t(@lead.ti_vin.int_color) rescue "N/A"
+    %tt #{t "Interior Color"}:
+  %li
+    %dt= t(@lead.ti_vin.ext_color) rescue "N/A"
+    %tt #{t "Exterior Color"}:
+  %li
+    %dt= t(@lead.ti_vin.requested_trade_in) rescue "N/A"
+    %tt #{t "Requested Trade In"}:
+  %li
+    %dt= t(@lead.ti_vin.actual_trade_value) rescue "N/A"
+    %tt #{t "Actual Trade In"}:
+  %li
+    %dt= t(@lead.ti_vin.payoff_amount) rescue "N/A"
+    %tt #{t "Payoff Amount"}:
+  %li
+    %dt= t(@lead.ti_vin.payoff_good_till) rescue "N/A"
+    %tt #{t "Payoff Good Till"}: 
   = render "fields/sidebar_show", :asset => @lead
   
 
