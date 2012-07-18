@@ -20,15 +20,5 @@
     = render @leads
   - else
     = render "shared/empty"
-%h2
-= @result.keys[0]
-- @result.values[0].values.each do |i|
-  %h4
-  = i.keys 
-  %br
-  - i.each do |s|
-    = s 
-  %br
-    
 #paginate= render "shared/paginate"
 #export= render "shared/export"

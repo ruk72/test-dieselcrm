@@ -44,15 +44,49 @@
       - else
         #{t :n_a}
     %tt #{t :campaign}:
+    
 
   - unless @lead.background_info.blank?
     .caption #{t :background_info}
     = auto_link(simple_format @lead.background_info).html_safe
-
-  = render "fields/sidebar_show", :asset => @lead
-
   - if @lead.tag_list.present?
     %dt
       .tags= tags_for_index(@lead)
+  .caption #{t "Vehicle Of Interest"}
+  %li
+    %dt= t(@lead.voi_vin.model_year)
+    %tt #{t "Model Name"}:
+  %li
+    %dt= t(@lead.voi_vin.model_make_id)
+    %tt #{t "Model Make"}:
+  %li
+    %dt= t(@lead.voi_vin.model_name)
+    %tt #{t "Model Name"}:
+  %li
+    %dt= t(@lead.voi_vin.model_trim)
+    %tt #{t "Model Trim"}:
+  %li
+    %dt= t(@lead.voi_vin.int_color)
+    %tt #{t "Interior Color"}:
+  %li
+    %dt= t(@lead.voi_vin.ext_color)
+    %tt #{t "Exterior Color"}:
+  %li
+    %dt= t(@lead.voi_vin.stock_no)
+    %tt #{t "Stock No"}:
+  %li
+    %dt= t(@lead.voi_vin.odo_reading)
+    %tt #{t "Odometer Reading"}:
+  %li
+    %dt= t(@lead.voi_vin.invoice_price)
+    %tt #{t "Invoice Price"}:
+  %li
+    %dt= t(@lead.voi_vin.actual_selling_price)
+    %tt #{t "Actual Selling Price"}:
+  = render "fields/sidebar_show", :asset => @lead
+  
+
+  
+  
 
   = hook(:show_lead_sidebar_bottom, self, :lead => @lead)

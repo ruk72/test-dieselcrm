@@ -1,0 +1,3 @@
+
+<%= select("voi_vin", "model_make_id", @carupdate.collect {|p| [ p.model_make_id, p.model_make_id ] }, {:prompt => 'Select'}, {:onChange => "#{remote_function(:url => {:controller =>"leads", :action => "update_modelmakeid", :object => @a}, :with => "'model_make_id='+value")}"}) %>
+

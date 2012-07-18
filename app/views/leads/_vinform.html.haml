@@ -1,0 +1,63 @@
+- edit ||= false
+- collapsed = session[:voi_vin].nil? 
+= subtitle :voi_vin, collapsed, t("Vehicle Of Interest")
+.section
+  %small#lead_vin_intro{ hidden_if(!collapsed) }
+    = t(:intro, t("vehicle Of Interest")) unless edit
+  #lead_voi{ hidden_if(collapsed) }
+    %table
+      %tr
+        %td
+          .label #{t "Year"}:
+          = select("voi_vin", "model_year", @vehiclecsv.collect {|p| [ p.model_year, p.model_year ] }, {:prompt => 'Select'}, {:onChange => "#{remote_function(:url => {:controller =>"leads", :action => "update_car"}, :with => "'model_year='+value")}"}) 
+        %td= spacer
+        %td 
+          .label #{t "Make"}: 
+          #update1
+            = render :partial =>'update_car', :object => [@carupdate, @a]
+      %tr 
+        %td  
+          .label #{t "Model Name"}:        
+          #update2
+            = render :partial =>'update_momaid', :object => [@momaid]
+        %td= spacer
+        %td
+          .label #{t "Model Trim"}:        
+          #update3
+            = render :partial =>'update_modeltrim', :object => [@motrim, @momaid]
+      %tr
+        %td
+          .label.top #{t "Interior Color"}:
+          = text_field :voi_vin, :int_color
+        %td= spacer
+        %td
+          .label.top #{t "Exterior Color"}:
+          = text_field :voi_vin, :ext_color
+      %tr
+        %td
+          .label.top #{t "Vin"}:
+          = text_field :voi_vin, :vin
+        %td= spacer
+        %td
+          .label.top #{t "MSRP"}:
+          = text_field :voi_vin, :selling_price
+      %tr
+        %td
+          .label.top #{t "Invoice Price"}:
+          = text_field :voi_vin, :invoice_price
+        %td= spacer
+        %td
+          .label.top #{t "Actual Selling Price"}:
+          = text_field :voi_vin, :actual_selling_price
+      %tr
+        %td
+          .label.top #{t "Odometer Reading"}:
+          = text_field :voi_vin, :odo_reading
+        %td= spacer
+        %td
+          .label.top #{t "Stock Number"}:
+          = text_field :voi_vin, :stock_no
+      %tr
+        %td
+          .label.top #{t "Notes"}:
+          = text_area :voi_vin, :notes
