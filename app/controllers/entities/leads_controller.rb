@@ -62,7 +62,7 @@ class LeadsController < EntitiesController
   end
   #update for api.
   def update_car
-    @carupdate = Vehiclecsv.find_all_by_model_year(params[:model_year], :order=>"model_make_id")
+    @carupdate = Vehiclecsv.select("distinct model_make_id").find_all_by_model_year(params[:model_year])
     @a = params[:model_year]
     # @carupdate1 = Kharabcar.find_all_by_id(params[:id])
     render :update do |page|
