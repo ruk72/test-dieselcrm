@@ -1,6 +1,6 @@
 - edit ||= false
-- collapsed = session[:voi_vin].nil? 
-= subtitle :voi_vin, collapsed, t("Vehicle Of Interest")
+- collapsed = session[:lead_voi_vin].nil? 
+= subtitle :lead_voi_vin, collapsed, t("Vehicle Of Interest")
 .section
   %small#lead_vin_intro{ hidden_if(!collapsed) }
     = t(:intro, t("vehicle Of Interest")) unless edit
@@ -60,4 +60,4 @@
       %tr
         %td
           .label.top #{t "Notes"}:
-          = text_area :voi_vin, :notes
+          = text_area :voi_vin, :notes, :rows => 2

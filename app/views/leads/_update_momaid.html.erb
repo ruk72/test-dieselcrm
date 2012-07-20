@@ -1,2 +1,2 @@
 
-<%= select("voi_vin", "model_name", @momaid.collect {|p| [ p.model_name, p.model_name ] }, {:prompt => 'Select'}, {:onChange => "#{remote_function(:url => {:controller =>"leads", :action => "update_modeltrim", :my => @momaid2.collect{|p| [ p.model_year].first}, :mm => @momaid2.collect{|p| [ p.model_make_id].first} }, :with => "'model_name='+value")}"}) %>
+<%= select("voi_vin", "model_name", @momaid.collect {|p| [ p.model_name, p.model_name ] }, {:prompt => 'Select'}, {:onChange => "#{remote_function(:url => {:controller =>"leads", :action => "update_modeltrim", :my => @momaid2.collect{|p| [ p.model_year].first}, :mm => @momaid2.collect{|p| [ p.model_make_display_name].first} }, :with => "'model_name='+value")}"}) %>

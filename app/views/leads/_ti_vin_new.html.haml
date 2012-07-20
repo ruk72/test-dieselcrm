@@ -1,6 +1,6 @@
 - edit ||= false
-- collapsed = session[:ti_vin].nil? 
-= subtitle :ti_vin, collapsed, t("Trade In")
+- collapsed = session[:lead_ti_vin].nil? 
+= subtitle :lead_ti_vin, collapsed, t("Trade In")
 .section
   %small#lead_vin_intro{ hidden_if(!collapsed) }
     = t(:intro, t("Trade In")) unless edit
@@ -60,8 +60,8 @@
       %tr
         %td
           .label.top #{t "Finance Company"}:
-          = text_area :ti_vin, :finance_company
+          = text_area :ti_vin, :finance_company,:rows => 2
         %td= spacer
         %td
           .label.top #{t "Notes"}:
-          = text_area :ti_vin, :notes
+          = text_area :ti_vin, :notes,:rows => 2

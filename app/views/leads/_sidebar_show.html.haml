@@ -55,16 +55,19 @@
   .caption #{t "Vehicle Of Interest"}
   %li
     %dt= t(@lead.voi_vin.model_year) rescue "N/A"
-    %tt #{t "Model Name"}:
+    %tt #{t "Vehicle Year"}:
   %li
-    %dt= t(@lead.voi_vin.model_make_id) rescue "N/A"
-    %tt #{t "Model Make"}:
+    %dt= t(@lead.voi_vin.model_make_display_name) rescue "N/A"
+    %tt #{t "Vehicle Make"}:
   %li
     %dt= t(@lead.voi_vin.model_name) rescue "N/A"
-    %tt #{t "Model Name"}:
+    %tt #{t "Vehicle Model"}:
   %li
     %dt= t(@lead.voi_vin.model_trim) rescue "N/A"
-    %tt #{t "Model Trim"}:
+    %tt #{t "Vehicle Trim"}:
+  %li
+    %dt= t(@lead.voi_vin.vin) rescue "N/A"
+    %tt #{t "VIN"}:
   %li
     %dt= t(@lead.voi_vin.int_color) rescue "N/A"
     %tt #{t "Interior Color"}:
@@ -83,37 +86,41 @@
   %li
     %dt= t(@lead.voi_vin.actual_selling_price) rescue "N/A"
     %tt #{t "Actual Selling Price"}:
-  .caption #{t "Trade In"}
-  %li
-    %dt= t(@lead.voi_vin.model_year) rescue "N/A"
-    %tt #{t "Model Name"}:
-  %li
-    %dt= t(@lead.ti_vin.model_make_id) rescue "N/A"
-    %tt #{t "Model Make"}:
-  %li
-    %dt= t(@lead.ti_vin.model_name) rescue "N/A"
-    %tt #{t "Model Name"}:
-  %li
-    %dt= t(@lead.ti_vin.model_trim) rescue "N/A"
-    %tt #{t "Model Trim"}:
-  %li
-    %dt= t(@lead.ti_vin.int_color) rescue "N/A"
-    %tt #{t "Interior Color"}:
-  %li
-    %dt= t(@lead.ti_vin.ext_color) rescue "N/A"
-    %tt #{t "Exterior Color"}:
-  %li
-    %dt= t(@lead.ti_vin.requested_trade_in) rescue "N/A"
-    %tt #{t "Requested Trade In"}:
-  %li
-    %dt= t(@lead.ti_vin.actual_trade_value) rescue "N/A"
-    %tt #{t "Actual Trade In"}:
-  %li
-    %dt= t(@lead.ti_vin.payoff_amount) rescue "N/A"
-    %tt #{t "Payoff Amount"}:
-  %li
-    %dt= t(@lead.ti_vin.payoff_good_till) rescue "N/A"
-    %tt #{t "Payoff Good Till"}: 
+  - if (@lead.ti_vin.model_year != nil) && (@lead.ti_vin.vin != nil )
+    .caption #{t "Trade In"}
+    %li
+      %dt= t(@lead.ti_vin.model_year) rescue "N/A"
+      %tt #{t "Vehicle Year"}:
+    %li
+      %dt= t(@lead.ti_vin.model_make_display_name) rescue "N/A"
+      %tt #{t "Vehicle Make"}:
+    %li
+      %dt= t(@lead.ti_vin.model_name) rescue "N/A"
+      %tt #{t "Vehicle Model"}:
+    %li
+      %dt= t(@lead.ti_vin.model_trim) rescue "N/A"
+      %tt #{t "Vehicle Trim"}:
+    %li
+      %dt= t(@lead.ti_vin.vin) rescue "N/A"
+      %tt #{t "VIN"}:
+    %li
+      %dt= t(@lead.ti_vin.int_color) rescue "N/A"
+      %tt #{t "Interior Color"}:
+    %li
+      %dt= t(@lead.ti_vin.ext_color) rescue "N/A"
+      %tt #{t "Exterior Color"}:
+    %li
+      %dt= t(@lead.ti_vin.requested_trade_in) rescue "N/A"
+      %tt #{t "Requested Trade In"}:
+    %li
+      %dt= t(@lead.ti_vin.actual_trade_value) rescue "N/A"
+      %tt #{t "Actual Trade In"}:
+    %li
+      %dt= t(@lead.ti_vin.payoff_amount) rescue "N/A"
+      %tt #{t "Payoff Amount"}:
+    %li
+      %dt= t(@lead.ti_vin.payoff_good_till) rescue "N/A"
+      %tt #{t "Payoff Good Till"}: 
   = render "fields/sidebar_show", :asset => @lead
   
 

@@ -63,7 +63,7 @@ class LeadsController < EntitiesController
   end
   #update for apivoi.
   def update_car
-    @carupdate = Vehiclecsv.select("distinct model_make_id").find_all_by_model_year(params[:model_year])
+    @carupdate = Vehiclecsv.select("distinct model_make_display_name").find_all_by_model_year(params[:model_year])
     @a = params[:model_year]
     # @carupdate1 = Kharabcar.find_all_by_id(params[:id])
     render :update do |page|
@@ -71,22 +71,22 @@ class LeadsController < EntitiesController
     end  
   end
   def update_modelmakeid
-    @momaid = Vehiclecsv.select("distinct model_name").find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
-    @momaid2 = Vehiclecsv.find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
+    @momaid = Vehiclecsv.select("distinct model_name").find_all_by_model_make_display_name_and_model_year(params[:model_make_display_name], params[:object])
+    @momaid2 = Vehiclecsv.find_all_by_model_make_display_name_and_model_year(params[:model_make_display_name], params[:object])
     render :update do |page|
       page.replace_html 'update2', :partial => 'leads/update_momaid', :object => [@momaid, @momaid2]
     end  
   end
   def update_modeltrim
     
-    @motrim = Vehiclecsv.find_all_by_model_name_and_model_year_and_model_make_id(params[:model_name],params[:my], params[:mm])
+    @motrim = Vehiclecsv.find_all_by_model_name_and_model_year_and_model_make_display_name(params[:model_name],params[:my], params[:mm])
     render :update do |page|
       page.replace_html 'update3', :partial => 'leads/update_modeltrim', :collection => [@motrim]
     end  
   end
   #update for apiti
   def update_car1
-    @carupdate = Vehiclecsv.select("distinct model_make_id").find_all_by_model_year(params[:model_year])
+    @carupdate = Vehiclecsv.select("distinct model_make_display_name").find_all_by_model_year(params[:model_year])
     @a = params[:model_year]
     # @carupdate1 = Kharabcar.find_all_by_id(params[:id])
     render :update do |page|
@@ -94,15 +94,15 @@ class LeadsController < EntitiesController
     end  
   end
   def update_modelmakeid1
-     @momaid = Vehiclecsv.select("distinct model_name").find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
-     @momaid2 = Vehiclecsv.find_all_by_model_make_id_and_model_year(params[:model_make_id], params[:object])
+     @momaid = Vehiclecsv.select("distinct model_name").find_all_by_model_make_display_name_and_model_year(params[:model_make_display_name], params[:object])
+     @momaid2 = Vehiclecsv.find_all_by_model_make_display_name_and_model_year(params[:model_make_display_name], params[:object])
      render :update do |page|
        page.replace_html 'update5', :partial => 'leads/update_momaid1', :object => [@momaid, @momaid2]
      end  
    end
    def update_modeltrim1
 
-     @motrim = Vehiclecsv.find_all_by_model_name_and_model_year_and_model_make_id(params[:model_name],params[:my], params[:mm])
+     @motrim = Vehiclecsv.find_all_by_model_name_and_model_year_and_model_make_display_name(params[:model_name],params[:my], params[:mm])
      render :update do |page|
        page.replace_html 'update6', :partial => 'leads/update_modeltrim1', :collection => [@motrim]
      end  
@@ -135,8 +135,8 @@ class LeadsController < EntitiesController
     get_campaigns
     respond_with(@lead) do |format|
       if @lead.save_with_permissions(params)
-        @voi_vin = VoiVin.create(:model_year => params[:voi_vin][:model_year], :model_make_id => params[:voi_vin][:model_make_id], :model_name => params[:voi_vin][:model_name], :model_trim => params[:voi_vin][:model_trim], :int_color => params[:voi_vin][:int_color], :ext_color => params[:voi_vin][:ext_color], :vin => params[:voi_vin][:vin], :selling_price => params[:voi_vin][:selling_price],:invoice_price => params[:voi_vin][:invoice_price], :actual_selling_price => params[:voi_vin][:actual_selling_price], :odo_reading => params[:voi_vin][:odo_reading],:stock_no => params[:voi_vin][:stock_no],:notes => params[:voi_vin][:notes] ,:lead_id => @lead.id )
-        @ti_vin = TiVin.create(:model_year => params[:ti_vin][:model_year], :model_make_id => params[:ti_vin][:model_make_id], :model_name => params[:ti_vin][:model_name], :model_trim => params[:ti_vin][:model_trim], :int_color => params[:ti_vin][:int_color], :ext_color => params[:ti_vin][:ext_color], :vin => params[:ti_vin][:vin], :requested_trade_in => params[:ti_vin][:requested_trade_in],:actual_trade_value => params[:ti_vin][:actual_trade_value],:odo_reading => params[:ti_vin][:odo_reading],:payoff_amount => params[:ti_vin][:payoff_amount], :payoff_good_till => params[:ti_vin][:payoff_good_till], :finance_company => params[:ti_vin][:finance_company], :notes => params[:ti_vin][:notes] ,:lead_id => @lead.id )
+        @voi_vin = VoiVin.create(:model_year => params[:voi_vin][:model_year], :model_make_display_name => params[:voi_vin][:model_make_display_name], :model_name => params[:voi_vin][:model_name], :model_trim => params[:voi_vin][:model_trim], :int_color => params[:voi_vin][:int_color], :ext_color => params[:voi_vin][:ext_color], :vin => params[:voi_vin][:vin], :selling_price => params[:voi_vin][:selling_price],:invoice_price => params[:voi_vin][:invoice_price], :actual_selling_price => params[:voi_vin][:actual_selling_price], :odo_reading => params[:voi_vin][:odo_reading],:stock_no => params[:voi_vin][:stock_no],:notes => params[:voi_vin][:notes] ,:lead_id => @lead.id )
+        @ti_vin = TiVin.create(:model_year => params[:ti_vin][:model_year], :model_make_display_name => params[:ti_vin][:model_make_display_name], :model_name => params[:ti_vin][:model_name], :model_trim => params[:ti_vin][:model_trim], :int_color => params[:ti_vin][:int_color], :ext_color => params[:ti_vin][:ext_color], :vin => params[:ti_vin][:vin], :requested_trade_in => params[:ti_vin][:requested_trade_in],:actual_trade_value => params[:ti_vin][:actual_trade_value],:odo_reading => params[:ti_vin][:odo_reading],:payoff_amount => params[:ti_vin][:payoff_amount], :payoff_good_till => params[:ti_vin][:payoff_good_till], :finance_company => params[:ti_vin][:finance_company], :notes => params[:ti_vin][:notes] ,:lead_id => @lead.id )
         # vin_search(@lead.vin, @lead.vin2, @lead.id)
         if called_from_index_page?                  
           @leads = get_leads
