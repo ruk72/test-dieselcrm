@@ -184,6 +184,9 @@ class LeadsController < EntitiesController
   def update
     respond_with(@lead) do |format|
       if @lead.update_with_permissions(params[:lead], params[:users])
+        @voi_vin = @lead.voi_vin.update_attributes(:model_year => params[:voi_vin][:model_year], :model_make_display_name => params[:voi_vin][:model_make_display_name], :model_name => params[:voi_vin][:model_name], :model_trim => params[:voi_vin][:model_trim], :int_color => params[:voi_vin][:int_color], :ext_color => params[:voi_vin][:ext_color], :vin => params[:voi_vin][:vin], :selling_price => params[:voi_vin][:selling_price],:invoice_price => params[:voi_vin][:invoice_price], :actual_selling_price => params[:voi_vin][:actual_selling_price], :odo_reading => params[:voi_vin][:odo_reading],:stock_no => params[:voi_vin][:stock_no],:notes => params[:voi_vin][:notes] ,:lead_id => @lead.id )
+        @ti_vin = @lead.ti_vin.update_attributes(:model_year => params[:ti_vin][:model_year], :model_make_display_name => params[:ti_vin][:model_make_display_name], :model_name => params[:ti_vin][:model_name], :model_trim => params[:ti_vin][:model_trim], :int_color => params[:ti_vin][:int_color], :ext_color => params[:ti_vin][:ext_color], :vin => params[:ti_vin][:vin], :requested_trade_in => params[:ti_vin][:requested_trade_in],:actual_trade_value => params[:ti_vin][:actual_trade_value],:odo_reading => params[:ti_vin][:odo_reading],:payoff_amount => params[:ti_vin][:payoff_amount], :payoff_good_till => params[:ti_vin][:payoff_good_till], :finance_company => params[:ti_vin][:finance_company], :notes => params[:ti_vin][:notes] ,:lead_id => @lead.id )
+        
         update_sidebar
       else
         @users = User.except(@current_user)
